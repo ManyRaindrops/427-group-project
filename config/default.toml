@@ -1,0 +1,57 @@
+# All tunable values live here. Paths are relative to the repository root.
+
+[paths]
+dataset_zip = "poker-hand-histories.zip"
+cache = "var/cache"
+reports = "var/reports"
+figures = "var/figures"
+
+[dataset]
+# Folder inside the zip holding the Pluribus no-limit hold'em sessions.
+hands_prefix = "data/pluribus/"
+
+[ratings]
+pagerank_damping = 0.85
+# Number of skill tiers found by 1-D k-means (shark / regular / fish).
+tier_count = 3
+
+[fairness]
+# Fairness = 100 * exp(-table_skill_std / scale). Skill is z-scored, so scale 1.0
+# means a table as spread out as the whole player pool scores about 37.
+skill_std_scale = 1.0
+# Share of each winner's profit moved back to that hand's losers, times (1 - fairness / 100).
+penalty_rate = 0.25
+
+[table]
+seats = 6
+small_blind = 50
+big_blind = 100
+starting_stack = 10000
+
+[bots]
+# Bot behaviour as a function of skill s in [0, 1]. Each trait scales with s or (1 - s).
+equity_noise_max = 0.22       # std of equity misjudgement at s = 0
+call_looseness_max = 0.22     # how far below pot odds an s = 0 bot still calls
+hand_reading_max = 1.5        # how hard an s = 1 bot discounts its equity when facing a big bet
+raise_margin = 0.12           # equity above fair share needed to value-raise
+passive_raise_floor = 0.25    # chance an s = 0 bot actually raises when it wants to
+bluff_rate_max = 0.10         # bluff frequency when checked to, at s = 1
+bet_pot_fraction = 0.75
+postflop_equity_samples = 40
+preflop_equity_samples = 600
+
+[population]
+# Tiers of true skill: name, share of players, skill range.
+player_count = 36
+tiers = [
+  { name = "shark", share = 0.25, low = 0.85, high = 1.00 },
+  { name = "regular", share = 0.40, low = 0.45, high = 0.65 },
+  { name = "fish", share = 0.35, low = 0.00, high = 0.20 },
+]
+
+[experiment]
+seed = 427
+hands_per_session = 60
+history_sessions = 20
+evaluation_sessions = 40
+workers = 12

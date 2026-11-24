@@ -1,0 +1,6 @@
+# Generated output (see [paths] in config/default.toml)
+var/
+__pycache__/
+*.egg-info/
+.pytest_cache/
+build/
