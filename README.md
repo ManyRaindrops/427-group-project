@@ -7,6 +7,8 @@ How Do I Get Rinsed Less? Finding Fair Poker Tables with Network Analysis
 
 **Result:** in a simulation with 36 bots of known skill, seating by Fairness Score cut weak players' losses by **85%** compared with random seating, using only ratings learned from play history. Details: [docs/results.md](docs/results.md).
 
+**Group members, start with [docs/project-guide.md](docs/project-guide.md):** what to fill in, where every file lives, a slide-by-slide map, and the full analysis and results.
+
 ## Quick start
 
 ```powershell
@@ -45,6 +47,6 @@ src/fairpoker/
   pipelines/               real-data analysis and seating experiment workflows
   reporting/               CSV / JSON reports and PNG figures
 tests/unit/                evaluator vs pokerkit, engine chip conservation, graphs, fairness
-docs/                      methodology and results
+docs/                      project guide, methodology, results, chart images
 var/                       generated output (gitignored)
 ```
